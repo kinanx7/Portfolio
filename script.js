@@ -147,9 +147,29 @@ function initMobileNav() {
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
       navMenu.classList.remove('open');
+      toggleBtn.setAttribute('aria-expanded', 'false');
       const icon = toggleBtn.querySelector('i');
       if (icon) icon.className = 'fas fa-bars';
     });
+  });
+
+  // Close mobile menu on outside click or Escape key
+  document.addEventListener('click', (e) => {
+    if (navMenu.classList.contains('open') && !navMenu.contains(e.target) && !toggleBtn.contains(e.target)) {
+      navMenu.classList.remove('open');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      const icon = toggleBtn.querySelector('i');
+      if (icon) icon.className = 'fas fa-bars';
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+      navMenu.classList.remove('open');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      const icon = toggleBtn.querySelector('i');
+      if (icon) icon.className = 'fas fa-bars';
+    }
   });
 }
 

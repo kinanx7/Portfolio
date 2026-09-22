@@ -219,15 +219,17 @@ section {
   left: 0;
   right: 0;
   z-index: 100;
-  transition: all var(--transition-normal);
-  padding: 20px 0;
+  padding: 16px 0;
+  background: rgba(7, 9, 14, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid transparent;
+  transition: padding var(--transition-normal), background-color var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
 }
 
 .site-header.scrolled {
   padding: 12px 0;
-  background: var(--bg-glass);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  background: rgba(11, 15, 24, 0.95);
   border-bottom: 1px solid var(--border-subtle);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
@@ -400,6 +402,39 @@ section {
   color: #ffffff;
   box-shadow: 0 4px 18px rgba(16, 185, 129, 0.4);
   transform: translateY(-2px);
+}
+
+.btn-linkedin {
+  background: rgba(10, 102, 194, 0.12);
+  border-color: rgba(10, 102, 194, 0.35);
+  color: #38bdf8;
+}
+
+.btn-linkedin:hover {
+  background: #0a66c2;
+  color: #ffffff;
+  box-shadow: 0 4px 18px rgba(10, 102, 194, 0.4);
+  transform: translateY(-2px);
+}
+
+.header-linkedin-btn {
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  padding: 0 !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}
+
+.header-linkedin-btn i {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Mobile Hamburger Toggle */
@@ -2005,11 +2040,37 @@ section {
   }
 
   .nav-actions {
-    gap: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 
-  .nav-actions .btn-whatsapp {
-    display: none;
+  .nav-actions .header-linkedin-btn {
+    display: inline-flex !important;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    padding: 0 !important;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .nav-actions .header-whatsapp-btn {
+    display: inline-flex !important;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    padding: 0 !important;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .nav-actions .header-whatsapp-btn span {
+    display: none !important;
   }
 
   .nav-actions .header-cv-btn {
@@ -2017,22 +2078,23 @@ section {
   }
 
   .lang-toggle-btn {
-    padding: 8px 12px;
-    font-size: 0.82rem;
+    padding: 7px 10px;
+    font-size: 0.78rem;
   }
 
   .mobile-toggle {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     border-radius: var(--radius-sm);
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid var(--border-light);
     color: #ffffff;
-    font-size: 1.1rem;
+    font-size: 1rem;
     cursor: pointer;
+    padding: 0;
   }
 
   .container {
@@ -2062,8 +2124,10 @@ section {
   }
 
   /* Hero Mobile */
-  .hero {
+  .hero,
+  .hero-section {
     padding: 100px 0 50px;
+    min-height: auto;
   }
 
   .hero-grid {
@@ -2123,16 +2187,23 @@ section {
     text-align: center;
   }
 
-  .hero-name {
-    font-size: 2.3rem;
-    line-height: 1.2;
-    margin-bottom: 10px;
+  .hero-title {
+    font-size: 1.25rem;
+    margin-bottom: 18px;
     text-align: center;
   }
 
-  .hero-title {
-    font-size: 1.15rem;
-    margin-bottom: 18px;
+  .hero-title .name-highlight {
+    font-size: 2.15rem;
+    line-height: 1.2;
+    margin-bottom: 6px;
+    display: block;
+    text-align: center;
+  }
+
+  .hero-title .text-gradient-hero {
+    font-size: 1.25rem;
+    display: block;
     text-align: center;
   }
 
@@ -2168,7 +2239,8 @@ section {
     margin: 0 auto;
   }
 
-  .stat-card {
+  .stat-card,
+  .stat-item {
     padding: 16px 12px;
   }
 
@@ -2291,10 +2363,11 @@ section {
     font-size: 0.9rem;
   }
 
-  .timeline-meta {
+  .timeline-meta,
+  .timeline-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 6px;
+    gap: 8px;
     margin-bottom: 14px;
   }
 
@@ -2313,7 +2386,8 @@ section {
   }
 
   /* Skills Mobile */
-  .skill-filters {
+  .skill-filters,
+  .skills-filter-nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -2376,7 +2450,7 @@ section {
   .form-input,
   .form-textarea {
     padding: 11px 14px;
-    font-size: 0.92rem;
+    font-size: 16px;
   }
 
   .footer-top {
@@ -2449,8 +2523,9 @@ html[dir="rtl"] .phone-val bdi {
     display: none;
   }
 
-  .hero {
-    padding: 90px 0 45px;
+  .hero,
+  .hero-section {
+    padding: 85px 0 45px;
   }
 
   .portrait-card {
@@ -2463,7 +2538,8 @@ html[dir="rtl"] .phone-val bdi {
     border-radius: 16px !important;
   }
 
-  .hero-name {
+  .hero-name,
+  .hero-title .name-highlight {
     font-size: 1.95rem;
   }
 
@@ -2472,7 +2548,8 @@ html[dir="rtl"] .phone-val bdi {
     gap: 10px;
   }
 
-  .stat-card {
+  .stat-card,
+  .stat-item {
     padding: 14px 10px;
   }
 
@@ -2500,11 +2577,13 @@ html[dir="rtl"] .phone-val bdi {
     gap: 8px;
   }
 
-  .stat-card {
+  .stat-card,
+  .stat-item {
     padding: 12px 10px;
   }
 
-  .hero-name {
+  .hero-name,
+  .hero-title .name-highlight {
     font-size: 1.85rem;
   }
 }
@@ -2566,9 +2645,6 @@ html[dir="rtl"] .btn {
 
 html[dir="rtl"] .nav-menu {
   gap: 26px;
-  border-bottom: 2px solid rgba(224, 122, 47, 0.35);
-  padding-bottom: 8px;
-  box-shadow: 0 4px 15px rgba(224, 122, 47, 0.12);
 }
 
 html[dir="rtl"] .nav-link {
@@ -2579,10 +2655,9 @@ html[dir="rtl"] .nav-link {
 html[dir="rtl"] .nav-link::after {
   left: auto;
   right: 0;
-  bottom: -9px;
-  height: 3px;
+  bottom: 0;
+  height: 2px;
   background: linear-gradient(270deg, var(--bronze-light), var(--bronze));
-  box-shadow: 0 0 12px var(--bronze);
 }
 
 html[dir="rtl"] .brand-logo-wrap {
@@ -2592,6 +2667,54 @@ html[dir="rtl"] .brand-logo-wrap {
 
 html[dir="rtl"] .brand-name {
   font-size: 1.35rem;
+}
+
+/* RTL Desktop Timeline & Systems Alignment */
+html[dir="rtl"] .timeline::before {
+  left: auto;
+  right: 30px;
+}
+
+html[dir="rtl"] .timeline-item {
+  padding-left: 0;
+  padding-right: 80px;
+  text-align: right;
+}
+
+html[dir="rtl"] .timeline-marker {
+  left: auto;
+  right: 19px;
+}
+
+html[dir="rtl"] .pipeline-step:not(:last-child)::after {
+  left: auto;
+  right: 18px;
+}
+
+html[dir="rtl"] .system-card-header {
+  text-align: right;
+}
+
+html[dir="rtl"] .system-header-left {
+  text-align: right;
+  align-items: flex-start;
+}
+
+html[dir="rtl"] .credential-institution {
+  justify-content: flex-start;
+}
+
+html[dir="rtl"] .contact-card-left {
+  text-align: right;
+}
+
+html[dir="rtl"] .module-title {
+  justify-content: flex-start;
+}
+
+html[dir="rtl"] .skill-card-top,
+html[dir="rtl"] .skill-level-header {
+  flex-direction: row-reverse;
 }
 
 /* RTL Mobile Specific Alignment & Mirroring */
@@ -2639,7 +2762,8 @@ html[dir="rtl"] .brand-name {
     right: 3px;
   }
 
-  html[dir="rtl"] .timeline-meta {
+  html[dir="rtl"] .timeline-meta,
+  html[dir="rtl"] .timeline-header {
     align-items: flex-start;
   }
 
